@@ -12,10 +12,13 @@
 <!--Putting inline as only writing a few lines-->
     <script>
         fetch("https://ci-swapi.herokuapp.com/api/")
-            .then(response => response.text()) // or .json() to covert response to text
-            .then(data => {
-                document.getElementById("content").innerText = data;
+            .then(response => response.text()) //to covert response to text or .json() to turn text into JS object which can be accessed through dot notation 
+            .then(data => { //calling response.text also returns a promise => need another then
+                document.getElementById("content").innerText = data; //e.g. data.people returns URL in people key
             });
+            .catch((e) => {
+                console.error("Error: ", e);
+            })
     </script>
 </body>
 
